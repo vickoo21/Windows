@@ -1,0 +1,13 @@
+csvde -f Exportusers.csv -s india -d "dc=india,dc=int,dc=com" -p subtree -r "(&(objectCategory=person)(objectClass=User)(givenname=*))" -l "cn,givenName,objectclass,samAccountName,displayName,mail,whenCreated,lastLogon,lastLogonTimestamp"
+
+
+
+csvde -f c:\AllDisabled.csv -r "(|(useraccountcontrol=514)(useraccountcontrol=530)(useraccountcontrol=546)(useraccountcontrol=66050)(useraccountcontrol=66066)(useraccountcontrol=66082)(useraccountcontrol=1049090)(useraccountcontrol=131586))" -l "cn,objectclass,objectcategory,sn,givenName,sAMAccountName,useraccountcontrol,displayname,mail,lastLogon,lastLogonTimestamp" 
+
+
+
+csvde -f Exportusers.csv -s corp -d "dc=corp,dc=int,dc=com" -p subtree -r "(&(objectCategory=person)(objectClass=User)(givenname=*))" -l "cn,givenName,objectclass,samAccountName,mail,whenCreated,lastLogon,lastLogonTimestamp"
+
+
+
+=IF(I2>0, DATE(1601,1,1) +I2 /600000000/1440,"")
