@@ -1,0 +1,23 @@
+http://social.technet.microsoft.com/wiki/contents/articles/3537.active-directory-domain-services-ad-ds-commands-and-scripts.aspx
+
+dsquery user forestroot -limit 0 | dsget user -display -samid -disabled > c:\ADEnableduservb.txt
+
+csvde -f c:\Exportusersvbcorp.csv -s corp -d "dc=corp,dc=int,dc=com" -p subtree -r "(&(objectCategory=person)(objectClass=User)(givenname=*))" -l     "cn,objectclass,samAccountName,displayName,lastLogonTimestamp"
+
+EXTRACT DISABLED ENABLED LIST
+
+dsquery user -name "*" -limit 0 | dsget user -fn -ln -samid -disabled | find /i "yes" >>c:\disabled_usersvb.txt
+
+
+GET SID OF AN AD OBJECT
+
+dsquery * -filter "&(objectcategory=user)(samaccountname=extractsvc)" -attr objectsid
+
+
+GET DN of Group
+
+dsquery group -name oci*
+
+GET DN of Group
+
+dsquery user -name oci*
